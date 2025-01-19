@@ -1,4 +1,4 @@
-# original sql, need to be fully tested
+# original sql, need to be optimized and fully tested
 with temp_volume_open_price_metrics as (
 select percentile_disc(0.25) within group (order by trades.volume) as volume_q1,
 percentile_disc(0.5) within group (order by trades.volume) as volume_q2,
@@ -47,7 +47,7 @@ select dt_report,login_hash,server_hash,symbol,currency,row_number() over (order
 on a.dt_report=h.dt_report and a.login_hash=h.login_hash and a.server_hash=h.server_hash and a.symbol=h.symbol and a.currency=h.currency
 
 
-#more efficient sql, need to be fully tested
+# possible more efficient sql, need to be optimized and fully tested
 with temp_volume_open_price_metrics as (
 select percentile_disc(0.25) within group (order by trades.volume) as volume_q1,
 percentile_disc(0.5) within group (order by trades.volume) as volume_q2,
